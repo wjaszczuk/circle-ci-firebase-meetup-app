@@ -1,0 +1,26 @@
+version: 2
+
+jobs:
+  check-versions:
+    docker:
+    - image: circleci/node:10.13.0
+    environment:
+    - ENV: prod
+    - NODE_ENV: production
+  steps:
+    - checkout
+    - run:
+      name: Show node version
+      command: node --version
+    - run:
+      name: Show npm version
+      command: npm --version
+    - run:
+      name: Show yarn version
+      command: yarn --version
+
+workflows:
+  version: 2
+  pipeline:
+    jobs:
+      - build

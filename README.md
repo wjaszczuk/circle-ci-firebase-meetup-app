@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## CircleCI and Firebase test app
 
-[![CircleCI](https://circleci.com/gh/wjaszczuk/circle-ci-firebase-meetup-app.svg?style=svg)](https://circleci.com/gh/wjaszczuk/circle-ci-firebase-meetup-app)
+[![CircleCI](https://circleci.com/gh/wjaszczuk/circle-ci-firebase-meetup-app/tree/master.svg?style=svg)](https://circleci.com/gh/wjaszczuk/circle-ci-firebase-meetup-app/tree/master)
 
 In the project directory, you can run:
 

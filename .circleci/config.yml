@@ -123,8 +123,16 @@ workflows:
       - create_artifact:
           requires:
             - build
+      - hold:
+          type: approval
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
       - deploy:
           requires:
+            - hold
             - build
           filters:
             branches:

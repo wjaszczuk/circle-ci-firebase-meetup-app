@@ -7,6 +7,7 @@ defaults: &defaults
   - ENV: prod
   - NODE_ENV: production
   - CI: true
+  - JEST_JUNIT_OUTPUT: ./test-results/jest/results.xml
 
 jobs:
   check-versions:
@@ -77,9 +78,9 @@ jobs:
         at: .
     - run:
         name: Test
-        command: yarn test --ci --coverage --json --outputFile=test-results.json
+        command: yarn test --ci --coverage --reporters=default --reporters=jest-junit
     - store_test_results:
-        path: test-results.json
+        path: test-results
     - store_artifacts:
         path: coverage
         prefix: coverage

@@ -1,12 +1,15 @@
 version: 2
 
+defaults: &defaults
+  docker:
+  - image: circleci/node:10.13.0
+  environment:
+  - ENV: prod
+  - NODE_ENV: production
+
 jobs:
   check-versions:
-    docker:
-      - image: circleci/node:10.13.0
-    environment:
-      - ENV: prod
-      - NODE_ENV: production
+    <<: *defaults
     steps:
       - checkout
       - run:
@@ -19,22 +22,14 @@ jobs:
           name: Show yarn version
           command: yarn --version
   install_dependencies:
-    docker:
-    - image: circleci/node:10.13.0
-    environment:
-    - ENV: prod
-    - NODE_ENV: production
+    <<: *defaults
     steps:
     - checkout
     - run:
         name: Install Dependencies
         command: yarn --pure-lockfile
   build:
-    docker:
-    - image: circleci/node:10.13.0
-    environment:
-    - ENV: prod
-    - NODE_ENV: production
+    <<: *defaults
     steps:
     - checkout
     - run:
@@ -47,4 +42,6 @@ workflows:
     jobs:
       - check-versions
       - install_dependencies
-      - build
+      - build:
+          requires:
+            - install_dependencies

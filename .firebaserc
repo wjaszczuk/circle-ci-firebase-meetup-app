@@ -1,0 +1,5 @@
+{
+  "projects": {
+    "default": "circle-ci-firebase-meetup-app"
+  }
+}

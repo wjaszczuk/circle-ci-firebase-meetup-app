@@ -150,7 +150,7 @@ workflows:
             - build
           filters:
             branches:
-              only: master
+              ignore: /.*/
             tags:
               only: /^v.*/
       - deploy:
@@ -159,6 +159,6 @@ workflows:
             - build
           filters:
             branches:
-              only: master
+              ignore: /.*/
             tags:
               only: /^v.*/

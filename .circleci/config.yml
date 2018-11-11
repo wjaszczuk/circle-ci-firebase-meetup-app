@@ -41,6 +41,24 @@ jobs:
     - run:
         name: Build
         command: yarn build
+  test:
+    <<: *defaults
+    steps:
+    - checkout
+    - attach_workspace:
+        at: .
+    - run:
+        name: Build
+        command: yarn test
+  lint:
+    <<: *defaults
+    steps:
+    - checkout
+    - attach_workspace:
+        at: .
+    - run:
+        name: Build
+        command: yarn lint
 
 workflows:
   version: 2
@@ -48,6 +66,14 @@ workflows:
     jobs:
       - check-versions
       - install_dependencies
+      - lint:
+          requires:
+            - install_dependencies
+      - test:
+          requires:
+            - install_dependencies
       - build:
           requires:
+            - lint
+            - test
             - install_dependencies

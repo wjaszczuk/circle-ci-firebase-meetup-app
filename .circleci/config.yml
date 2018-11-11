@@ -54,6 +54,18 @@ jobs:
     - run:
         name: Build
         command: yarn build
+    - persist_to_workspace:
+        root: .
+        paths:
+          - build/*
+  create_artifact:
+    <<: *defaults
+    steps:
+    - checkout
+    - attach_workspace:
+        at: .
+    - store_artifacts:
+        path: build
   test:
     <<: *defaults
     steps:
@@ -90,3 +102,6 @@ workflows:
             - lint
             - test
             - install_dependencies
+      - create_artifact:
+          requires:
+            - build

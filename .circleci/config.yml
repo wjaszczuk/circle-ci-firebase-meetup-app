@@ -65,7 +65,6 @@ jobs:
   create_artifact:
     <<: *defaults
     steps:
-    - checkout
     - attach_workspace:
         at: .
     - store_artifacts:

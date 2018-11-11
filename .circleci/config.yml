@@ -106,20 +106,42 @@ workflows:
   version: 2
   pipeline:
     jobs:
-      - check-versions
-      - install_dependencies
+      - check-versions:
+          filters:
+            tags:
+              only: /.*/
+      - install_dependencies:
+          filters:
+            tags:
+              only: /.*/
       - lint:
           requires:
             - install_dependencies
+          filters:
+            tags:
+              only: /.*/
       - test:
           requires:
             - install_dependencies
+          filters:
+            tags:
+              only: /.*/
       - build:
           requires:
             - lint
             - test
             - install_dependencies
+          filters:
+            branches:
+              only: master
+            tags:
+              only: /.*/
       - create_artifact:
+          filters:
+            branches:
+              only: master
+            tags:
+              only: /.*/
           requires:
             - build
       - hold:
@@ -129,6 +151,8 @@ workflows:
           filters:
             branches:
               only: master
+            tags:
+              only: /^v.*/
       - deploy:
           requires:
             - hold
@@ -136,3 +160,5 @@ workflows:
           filters:
             branches:
               only: master
+            tags:
+              only: /^v.*/

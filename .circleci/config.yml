@@ -18,9 +18,24 @@ jobs:
       - run:
           name: Show yarn version
           command: yarn --version
+  build:
+    docker:
+    - image: circleci/node:10.13.0
+    environment:
+    - ENV: prod
+    - NODE_ENV: production
+    steps:
+    - checkout
+    - run:
+        name: Install Dependencies
+        command: yarn --pure-lockfile
+    - run:
+        name: Build
+        command: yarn build
 
 workflows:
   version: 2
   pipeline:
     jobs:
       - check-versions
+      - build

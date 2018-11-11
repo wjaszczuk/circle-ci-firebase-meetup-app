@@ -28,10 +28,16 @@ jobs:
     - run:
         name: Install Dependencies
         command: yarn --pure-lockfile
+    - persist_to_workspace:
+        root: .
+        paths:
+          - node_modules/*
   build:
     <<: *defaults
     steps:
     - checkout
+    - attach_workspace:
+        at: .
     - run:
         name: Build
         command: yarn build

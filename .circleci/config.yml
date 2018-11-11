@@ -59,6 +59,8 @@ jobs:
         paths:
           - node_modules/*
           - build/*
+          - firebase.json
+          - .firebaserc
   create_artifact:
     <<: *defaults
     steps:

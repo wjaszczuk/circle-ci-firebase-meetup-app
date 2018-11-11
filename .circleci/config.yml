@@ -74,7 +74,7 @@ jobs:
         at: .
     - run:
         name: Test
-        command: yarn test --ci --coverage --json --outputFile=test-result.json
+        command: yarn test --ci --coverage --json --outputFile=test-results.json
     - store_artifacts:
         path: test-results.json
         prefix: tests

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './index.css';
 
 const App: React.FunctionComponent = () =>
     <div className="App">

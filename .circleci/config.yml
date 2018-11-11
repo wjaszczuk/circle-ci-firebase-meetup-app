@@ -6,6 +6,7 @@ defaults: &defaults
   environment:
   - ENV: prod
   - NODE_ENV: production
+  - CI: true
 
 jobs:
   check-versions:

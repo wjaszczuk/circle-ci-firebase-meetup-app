@@ -149,12 +149,15 @@ workflows:
           requires:
             - build
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /^v.*/
       - deploy:
           requires:
             - hold
-            - build
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /^v.*/

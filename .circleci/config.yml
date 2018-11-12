@@ -146,12 +146,12 @@ workflows:
       - hold:
           type: approval
           requires:
-            - build
+            - create_artifact
           filters:
             branches:
               ignore: /.*/
             tags:
-              only: /^v.*/
+              only: /^v[0-9]+(\.[0-9]+)*$/
       - deploy:
           requires:
             - hold
@@ -159,4 +159,4 @@ workflows:
             branches:
               ignore: /.*/
             tags:
-              only: /^v.*/
+              only:  /^v[0-9]+(\.[0-9]+)*$/

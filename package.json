@@ -1,6 +1,6 @@
 {
   "name": "circle-ci-firebase-meetup-app",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "private": true,
   "dependencies": {
     "@types/enzyme": "^3.1.15",

@@ -130,7 +130,6 @@ workflows:
           requires:
             - lint
             - test
-            - install_dependencies
           filters:
             branches:
               only: master

@@ -149,8 +149,6 @@ workflows:
           requires:
             - build
           filters:
-            branches:
-              ignore: /.*/
             tags:
               only: /^v.*/
       - deploy:
@@ -158,7 +156,5 @@ workflows:
             - hold
             - build
           filters:
-            branches:
-              ignore: /.*/
             tags:
               only: /^v.*/
